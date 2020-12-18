@@ -17,17 +17,9 @@ jobs:
       - uses: 8398a7/action-slack@v3
         with:
           status: custom
-          fields: workflow,job,commit,repo,ref,author,took
           custom_payload: |
             {
-              Content: {
-                  "text": "I am a test message",
-                  "attachments": [
-                      {
-                          "text": "And here’s an attachment!"
-                      }
-                  ]
-              }
+              Content: "{\r\n                  \"text\": \"I am a test message\",\r\n                  \"attachments\": [\r\n                      {\r\n                          \"text\": \"And here\u2019s an attachment!\"\r\n                      }\r\n                  ]\r\n              }"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
