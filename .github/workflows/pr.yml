@@ -17,7 +17,7 @@ jobs:
           fields: all
           custom_payload: |
             {
-              Content: `${process.env.AS_EVENT_NAME}\n${process.env.AS_REF}\n${process.env.AS_ACTION}`
+              Content: `${process.env.AS_EVENT_NAME}\n${process.env.AS_REF}\n${process.env.AS_ACTION}\n${process.env.AS_AUTHOR}`
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
