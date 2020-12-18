@@ -17,6 +17,7 @@ jobs:
       - uses: 8398a7/action-slack@v3
         with:
           status: custom
+          fields: all
           custom_payload: |
             {
               Content: "*Type:*\n${process.env.AS_EVENT_NAME}"
