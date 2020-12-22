@@ -19,9 +19,9 @@ jobs:
           fields: all
           custom_payload: |
             {
-              Type: 'Issue',
-              Content: `https://github.com/hitendran/universe-automation/issues/${{ env.ISSUE_NUMBER }}`
+              Type: 'Release',
+              Content: `https://github.com/hitendran/universe-automation/tag/${{ env.TAG }}`
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}      
+          TAG: ${{ github.event.tag_name }}      
