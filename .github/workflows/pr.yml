@@ -11,13 +11,10 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-      - uses: 8398a7/action-slack@v3
-        with:
-          status: custom
-          fields: all
-          custom_payload: |
-            {
-              Content: `${process.env.AS_EVENT_NAME}\n${process.env.AS_REF}\n${process.env.AS_ACTION}\n${process.env.AS_AUTHOR}`
-            }
+      - run: echo ::set-env name=pull_number::$(jq — raw-output .pull_request.number $GITHUB_EVENT_PATH)
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@master
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: ‘Please review on https://github.com/hitendran/universe-automation/pull/${{ env.pull_number}}’
+          SLACK_TITLE: ‘Pull request’
