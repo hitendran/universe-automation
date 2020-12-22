@@ -19,7 +19,7 @@ jobs:
           fields: all
           custom_payload: |
             {
-              Type: 'Pull Request'
+              Type: 'Pull Request',
               Content: `https://github.com/hitendran/universe-automation/pull/${{ env.PR_NUMBER }}`
             }
         env:
