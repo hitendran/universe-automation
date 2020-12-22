@@ -11,7 +11,7 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-      - run: echo "pull_number=$(jq — raw-output .pull_request.number $GITHUB_EVENT_PATH)" >> $GITHUB_ENV
+      - run: echo `pull_number=pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")` >> $GITHUB_ENV
       - name: Slack Notification
         uses: 8398a7/action-slack@v3
         with:
@@ -19,7 +19,8 @@ jobs:
           fields: all
           custom_payload: |
             {
-              Content: `Please review on https://github.com/hitendran/universe-automation/pull/${{ env.pull_number}}`
+              Content: `Please review on https://github.com/hitendran/universe-automation/pull/${{ env.PR_NUMBER }}`
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          PR_NUMBER: ${{ github.event.number }}
