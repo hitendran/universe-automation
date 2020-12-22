@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Issue Slack Notification
-        if: ${{ github.event.issue }}
+        if: github.event_name == 'issues'
         uses: 8398a7/action-slack@v3
         with:
           status: custom
