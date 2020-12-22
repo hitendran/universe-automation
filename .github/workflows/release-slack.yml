@@ -22,7 +22,7 @@ jobs:
           custom_payload: |
             {
               Type: `${{ env.TAG_NAME }}`,
-              Content: `https://github.com/hitendran/universe-automation/tag/${{ env.TAG_NAME }}`
+              Content: `https://github.com/hitendran/universe-automation/releases/tag/${{ env.TAG_NAME }}`
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
