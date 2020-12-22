@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: Release Slack Notification
+name: Release Notification
 
 # Controls when the action will run. 
 on:
@@ -21,9 +21,9 @@ jobs:
           fields: all
           custom_payload: |
             {
-              Type: `${{ env.TAG_NAME }}`,
+              Version: `${{ env.TAG_NAME }}`,
               Content: `https://github.com/hitendran/universe-automation/releases/tag/${{ env.TAG_NAME }}`
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_RELEASE_WEBHOOK }}
           TAG_NAME: ${{ env.RELEASE_VERSION }}
