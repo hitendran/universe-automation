@@ -19,8 +19,7 @@ jobs:
           fields: all
           custom_payload: |
             {
-              Content: `Please review on https://github.com/hitendran/universe-automation/pull/${process.env.pull_number}`
+              Content: `Please review on https://github.com/hitendran/universe-automation/pull/${{ env.pull_number}}`
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-          pull_number: ${{ env.pull_number }}
