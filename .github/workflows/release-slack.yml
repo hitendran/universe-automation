@@ -12,16 +12,16 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-      - name: Issue Slack Notification
+      - name: Release Slack Notification
         uses: 8398a7/action-slack@v3
         with:
           status: custom
           fields: all
           custom_payload: |
             {
-              Type: 'Release',
-              Content: `https://github.com/hitendran/universe-automation/tag/${{ env.TAG }}`
+              Type: `${{ env.TAG_NAME }}`,
+              Content: `https://github.com/hitendran/universe-automation/tag/${{ env.TAG_NAME }}`
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-          TAG: ${{ github.event.tag_name }}      
+          TAG_NAME: ${{ github.ref }}
