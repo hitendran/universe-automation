@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Issue Slack Notification
-        if: ${{ !github.event.issue.pull_request }}
+        if: ${{ github.event.issue }}
         uses: 8398a7/action-slack@v3
         with:
           status: custom
@@ -31,7 +31,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
       - name: PR Slack Notification
-        if: ${{ github.event.issue.pull_request }}
+        if: ${{ github.event.pull_request }}
         uses: 8398a7/action-slack@v3
         with:
           status: custom
