@@ -15,6 +15,6 @@ jobs:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_MESSAGE: ‘Please review on https://github.com/hitendran/universe-automation/pull/${{ env.pull_number}}’
           SLACK_TITLE: ‘Pull request’
